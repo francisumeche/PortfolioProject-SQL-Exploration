@@ -36,6 +36,30 @@ END AS percentage_of_population_deaths
 FROM `francis-analytics-course.Portfolio_Projects.covid_deaths`
 ORDER BY location;
 
+SELECT 
+  continent,
+  MAX(total_deaths) AS total_deaths
+FROM 
+  `francis-analytics-course.Portfolio_Projects.covid_deaths`
+WHERE continent IS NOT NULL
+GROUP BY 
+  continent
+ORDER BY 
+  total_deaths DESC;
+
+CREATE VIEW `francis-analytics-course.Portfolio_Projects.deaths_by_continent`
+AS
+SELECT 
+  continent,
+  MAX(total_deaths) AS total_deaths
+FROM 
+  `francis-analytics-course.Portfolio_Projects.covid_deaths`
+WHERE continent IS NOT NULL
+GROUP BY 
+  continent
+ORDER BY 
+  total_deaths DESC;
+
 
 SELECT 
   location,
